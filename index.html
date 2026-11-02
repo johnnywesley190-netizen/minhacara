@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso de Francês - Flashcards</title>
+  <style>
+    :root {
+      --primary: #0055A5;
+      --secondary: #EF4135;
+      --bg: #F4F7FB;
+      --card-bg: #FFFFFF;
+      --text: #2C3E50;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .section-title {
+      width: 100%;
+      max-width: 800px;
+      margin: 25px 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--primary);
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .flashcard {
+      background-color: transparent;
+      height: 160px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 12px;
+    }
+
+    .flashcard.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .card-front {
+      background-color: var(--card-bg);
+      border: 2px solid #E2E8F0;
+    }
+
+    .card-front .tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .card-front h3 {
+      font-size: 1.25rem;
+      color: #1A202C;
+    }
+
+    .card-front span.hint {
+      font-size: 0.8rem;
+      color: #A0AEC0;
+      margin-top: 10px;
+    }
+
+    .card-back {
+      background-color: var(--primary);
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .card-back.expression {
+      background-color: var(--secondary);
+    }
+
+    .card-back h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .card-back p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🇫🇷 Français Facile</h1>
+    <p>Aprenda francês praticando com Flashcards. Toque no cartão para ver a resposta!</p>
+  </header>
+
+  <h2 class="section-title">📐 Regras de Gramática</h2>
+  <div class="cards-grid">
+    
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Gramática</span>
+          <h3>Pronomes Pessoais</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back">
+          <h3>Je, Tu, Il/Elle, Nous, Vous, Ils/Elles</h3>
+          <p>Eu, Tu, Ele/Ela, Nós, Vós/Você(s), Eles/Elas</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Gramática</span>
+          <h3>Verbo ÊTRE (Ser/Estar)</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back">
+          <h3>Je suis / Tu es / Il est</h3>
+          <p>Nôus sommes / Vous êtes / Ils sont</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Gramática</span>
+          <h3>Negação Simples</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back">
+          <h3>Ne + Verbo + Pas</h3>
+          <p>Exemplo: Je <b>ne</b> sais <b>pas</b> (Eu não sei)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">🗣️ Expressões & Palavras Úteis</h2>
+  <div class="cards-grid">
+    
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Expressão</span>
+          <h3>"Bonjour !"</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back expression">
+          <h3>Bom dia / Olá</h3>
+          <p>Usado durante o dia de forma formal ou informal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Expressão</span>
+          <h3>"S'il vous plaît"</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back expression">
+          <h3>Por favor</h3>
+          <p>Forma educada/formal (Usado com pessoas que não conhece).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Vocabulário</span>
+          <h3>"Merci beaucoup !"</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back expression">
+          <h3>Muito obrigado(a)!</h3>
+          <p>Usado para agradecer com intensidade.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <span class="tag">Expressão</span>
+          <h3>"Ça va ?"</h3>
+          <span class="hint">Toque para ver</span>
+        </div>
+        <div class="card-back expression">
+          <h3>Tudo bem? / Como vai?</h3>
+          <p>Muito comum no dia a dia entre amigos.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Criado por você com a ajuda do Gemini • Hospedado no GitHub Pages</p>
+  </footer>
+
+  <script>
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+  </script>
+
+</body>
+</html>
